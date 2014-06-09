@@ -3,7 +3,7 @@ app.controller('MainCTRL', function ($scope, projectService, $timeout) {
     init();
 
     function init() {
-        $scope.newProject = {};
+        $scope.newProject = {"name":"", "host":"", "user":"", "password":"", "database":""};
         $scope.projectsList = projectService.projectsList();
         console.log($scope.projectsList);
         $scope.notification = {"text":""};
@@ -32,7 +32,7 @@ app.controller('MainCTRL', function ($scope, projectService, $timeout) {
                 $scope.projectsList = projectService.projectsList();
                 $scope.newProject = {"name":"", "host":"", "user":"", "password":"", "database":""};
             }else{
-                $scope.showAlert("Project "+Project.name+" is not created! Chack your data!");
+                $scope.showAlert("Project "+Project.name+" is not created! Check your data!");
             };
         });
         
