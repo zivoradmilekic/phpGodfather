@@ -8,7 +8,7 @@
 							</header>
 							<div class="content" id="projectsList" ng-show="showProjectsList.show" >
 								<ul>
-									<p ng-show="!projectsList" style="padding: 5px;">There are not projects!</p>
+									<p ng-show="projectsList.length==0" style="padding: 5px;">There are not projects!</p>
 									<li ng-repeat="project in projectsList | orderBy:'-date'">
 										
 										<button class="icon" ng-class="{iconBlue:project.delete}" style="margin-left: 3px; position: absolute; right: 10px; top: 17px;" ng-click="project.delete=!project.delete" ><i class="iconRemove"></i></button>
