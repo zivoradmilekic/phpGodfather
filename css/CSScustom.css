@@ -1,0 +1,847 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Helvetica, Arial, sans-serif;
+    /* font-size: 16px; */
+    color: #222222;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+}
+body {
+    background-color: #E6E6E6;
+}
+header.main {
+    background-color: #E6E6E6;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.50);
+    padding: 7px;
+    width: 100%;
+    display: inline-block;
+    position: fixed;
+    top: 0px;
+    z-index: 200;
+}
+header.main>* {
+    float: left;
+}
+header.main a img {
+    margin-top: 5px;
+    margin-left: 0px;
+    transition: margin-left 0.4s;
+}
+header.main .h1 {
+    border: 1px solid transparent;  
+    background-color: transparent;  
+    margin: -8px;  
+    margin-left: 4px;  padding: 7px 12px;  
+    padding-right: 36px;
+    color: #555;  font-weight: bold;  font-size: 2em;
+    height: 54px;
+    min-width: 120px;
+    background-image: url('../images/edit-icon.png');
+    background-position: calc( 100% - 8px) 16px;
+    background-size: 22px;
+    background-repeat: no-repeat;
+}
+header.main .h1:hover {
+    border: 1px solid rgba(172, 172, 172, 1);  
+    background-color: #CECECE;            
+}
+header.main nav {
+    margin-top: 3px;
+}
+div#main div.main {
+    top: 53px;
+    bottom: 0px;
+    width: 100%;
+    background-color: #E6E6E6;
+    position: fixed;
+}
+div#main div.main>* {
+    display: inline-block;
+}
+div#main div.main div.demo {
+    position: fixed;
+    width: auto;
+    right: 350px;
+    left: 0px;
+    overflow: hidden;
+    bottom: 0px;
+    top: 54px;
+    background-color: #BBB;
+}
+div#main div.main div.demo div.content {
+    max-width: 800px;
+    float: none;
+    margin: 0px auto;
+    padding: 0px 10px;
+    position: relative;
+}
+div#main div.main div.demo div.content div.panel {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+div#main div.main aside {
+    width: 350px;
+    height: 100%;
+    float: right;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    overflow: hidden;
+}
+div#main div.main aside div#projectsList {
+    padding: 0px;
+}
+div#main div.main aside div.panel {} div#panel div.main {
+    position: fixed;
+    top: 53px;
+    bottom: 0px;
+    width: 100%;
+}
+header.panel {
+    background-color: #DBDBDB;
+    border-bottom: 1px solid #D3D3D3;
+    padding: 10px;
+    padding-bottom: 9px;
+    font-weight: bold;
+}
+div.panel {
+    width: 350px;
+    background-color: #E6E6E6;
+}
+div.panel div.content {
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #D3D3D3;
+}
+div.panel div.content ul {
+    list-style: none;
+}
+div.panel div.content ul li {
+    text-decoration: none;
+    color: #222222;
+    position: relative;
+}
+div.panel div.content ul li a {
+    padding: 5px;
+    border-bottom: 1px solid #D3D3D3;
+    display: block;
+    text-decoration: none;
+}
+div.panel div.content ul li a h4 {
+    margin: 5px;
+}
+div.panel div.content ul li a p {
+    margin: 5px;
+}
+div#panel div.main aside {
+    width: 235px;
+    top: 53px;
+    bottom: 0px;
+    overflow: hidden;
+    left: 0px;
+    background-color: #E6E6E6;
+    position: fixed;
+}
+div#panel div.main aside header {
+    background-color: #E6E6E6;
+}
+div#panel div.main aside header div.onRight {
+    margin-top: -4px;
+}
+div#panel div.main aside ul.tables {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    height: calc(100% - 40px);
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+div#panel div.main aside ul.tables>* {
+    clear: both;
+}
+div#panel div.main aside ul.tables li {
+    list-style: none;
+    /*display: -webkit-box;*/
+    /*display:-moz-box;*/
+}
+div#panel div.main aside ul.tables li header {
+    margin: 0px;
+    padding: 0px;
+    padding: 7px;
+    background-color: #DBDBDB;
+    border-bottom: 1px solid #D3D3D3;
+    border-left: 3px solid #3ABA2A;
+    width: 100%;
+    height: 44px;
+}
+div#panel div.main aside ul.tables li header>* {
+    float: left;
+}
+div#panel div.main aside ul.tables li header button {
+    float: right;
+    margin-right: 5px;
+}
+div#panel div.iconDragList {
+    width: 24px;
+    height: 24px;
+    background-color: #222;
+    border-radius: 100%;
+    padding-top: 4px;
+    padding-left: 5px;
+    margin: 2px;
+}
+div#panel div.main aside ul.tables li header p {
+    max-width: 155px;
+    overflow: hidden;
+}
+div#panel div.main aside ul.tables li ul.tableFields {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+div#panel div.main aside ul.tables li ul.tableFields li {
+    list-style: none;
+    border-bottom: 1px solid #D3D3D3;
+    border-left: 3px solid #518AE7;
+    margin: 0px;
+    padding: 0px;
+    background-color: #E6E6E6;
+}
+div#panel div.main aside ul.tables li ul.tableFields li p {
+    margin: 0px;
+    padding: 5px;
+}
+div.classesMainPanel {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    background-color: #E6E6E6;
+    top: 53px;
+    bottom: 0px;
+    right: 0px;
+    left: 235px;
+}
+header.classesMain {
+    background-color: #DBDBDB;
+    padding: 0px;
+    height: 40px;
+}
+header.classesMain>* {
+    float: left;
+    height: 40px;
+    position: relative;
+}
+header.classesMain>* .icon.remove{
+    position: absolute;
+    top: 11px;
+    right: 8px;
+}
+div.classesHolder {
+    background-color: #E6E6E6;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    height: calc(100% - 40px);
+}
+div.class {
+    padding: 15px;
+    padding-right: 20px;
+    display: none;
+    clear: both;
+    width: 100%;
+    /* overflow: hidden; */
+    /* position: absolute; */
+    /* top: 30px; */
+    /* bottom: 0px; */
+}
+div.classShow {
+    display: inline-block;
+}
+div.class>* {
+    float: left;
+}
+div.createClass {
+    width: 330px;
+    margin: auto;
+}
+div.variablesHolder {
+    margin-right: 1%;
+    width: 29.5%;
+    transition: all 0.4s;
+}
+div.variablesHolder header {} div.variablesHolder header .h3 {
+    margin: 5px 5px 5px 0px;
+    float: left;
+    width: calc(100% - 125px);
+    font-size: 1.17em;
+    font-weight: bold;
+}
+ul.variables {
+    /* list-style: none; */
+    border: 1px solid #D3D3D3;
+    width: 100%;
+}
+ul.variables li>* {
+    float: left;
+}
+ul.variables li {
+    margin: 0px;
+    padding: 5px;
+    background-color: #DBDBDB;
+    border-bottom: 1px solid #D3D3D3;
+    width: 100%;
+    display: block;
+    clear: both;
+    height: 40px;
+}
+ul.variables li .name {} ul.variables li .value {
+    padding: 5px;
+    background-color: #ABABAB;
+    border-radius: 5px;
+    height: 18px;
+    margin: 0px;
+    right: 40px;
+    top: 5px;
+    display: inline-table;
+}
+div.methodsHolder {
+    width: 69.5%;
+    transition: all 0.4s;
+}
+ul.methods {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    border: 1px solid #D3D3D3;
+    width: 100%;
+}
+ul.methods li {
+    display: block;
+}
+ul.methods li header {
+    margin: 0px;
+    padding: 5px;
+    background-color: #DBDBDB;
+    border-bottom: 1px solid #D3D3D3;
+    width: 100%;
+    display: block;
+    height: 40px;
+}
+ul.methods li header>* {
+    float: left;
+}
+ul.methods li header input.name {
+    width: auto;
+    background-color: transparent;
+    border: none;
+    margin: 5px 0px;
+    padding: 0px;
+    font-size: 16px;
+}
+ul.methods li header input.sendObject {
+    width: 24px;
+    height: 24px;
+    margin: 2px;
+}
+ul.methods li div.body {
+    padding: 7px;
+    clear: both;
+}
+ul.methods li div.body div.conteiner {
+    width: 100%;
+    height: 33px;
+    background-color: #EEE;
+    border: 1px solid #D3D3D3;
+    display: inline-table;
+    padding-bottom: 3px;
+    padding-left: 3px;
+}
+h4 {
+    margin: 10px 0px;
+}
+p {
+    margin: 5px 0px;
+}
+textarea {
+    height: 100px;
+    resize: none;
+}
+select {
+    width: 100%;
+    padding: 5px;
+}
+select optgroup {
+    color: #222222;
+}
+select optgroup option:hover {
+    /*color: #222222;*/
+    background-color: #FF0000;
+}
+input,
+textarea {
+    width: 100%;
+    padding: 5px;
+}
+input.red:focus,
+textarea.red:focus,
+select.red:focus {
+    outline-color: #BE3027;
+    outline-style: auto;
+    outline-width: 5px;
+}
+input.blue:focus,
+textarea.blue:focus,
+select.blue:focus {
+    outline-color: #518AE7;
+    outline-style: auto;
+    outline-width: 5px;
+}
+input.green:focus,
+textarea.green:focus,
+select.green:focus {
+    outline-color: #3ABA2A;
+    outline-style: auto;
+    outline-width: 5px;
+}
+div.panel div.content>*,
+div.createClass>* {
+    display: block;
+}
+div.panel div.content>button {
+    display: inline-block;
+}
+div.icon {
+    width: 18px;
+    height: 18px;
+    background-color: #222;
+    border-radius: 9px;
+    color: #E6E6E6;
+    padding-top: 1px;
+    padding-left: 2px;
+}
+div.icon#x:hover {
+    width: 18px;
+    height: 18px;
+    background-color: #444;
+    border-radius: 9px;
+    color: #E6E6E6;
+}
+div.icon#x:active {
+    width: 18px;
+    height: 18px;
+    background-color: #666;
+    border-radius: 9px;
+    color: #E6E6E6;
+}
+div.remove {
+    position: absolute;
+    top: 7px;
+    right: 6px;
+}
+button.icon {
+    margin: 2px;
+    width: 24px;
+    height: 24px;
+    background-color: #222;
+    border: 0px;
+    border-radius: 12px;
+    color: #E6E6E6;
+}
+button.icon:hover {
+    background-color: #444;
+}
+button.icon:active {
+    background-color: #666;
+}
+button.iconRed {
+    border: 1px solid #BE3027;
+    background-color: #BE3027;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.15);
+}
+button.iconRed:hover {
+    border: 1px solid #A62620;
+    background-color: #A62620;
+}
+button.iconRed:active,
+button.iconRed:disabled {
+    border: 1px solid #8E1C1C;
+    background-color: #8E1C1C;
+}
+button.iconBlue {
+    border: 1px solid #518AE7;
+    background-color: #518AE7;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.15);
+}
+button.iconBlue:hover {
+    border: 1px solid #4777BB;
+    background-color: #4777BB;
+}
+button.iconBlue:active,
+button.iconBlue:disabled {
+    border: 1px solid #30538C;
+    background-color: #30538C;
+}
+button.iconGreen {
+    border: 1px solid #3ABA2A;
+    background-color: #3ABA2A;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.15);
+}
+button.iconGreen:hover {
+    border: 1px solid #32AB21;
+    background-color: #32AB21;
+}
+button.iconGreen:active,
+button.iconGreen:disabled {
+    border: 1px solid #24731A;
+    background-color: #24731A;
+}
+button.gray {
+    padding: 5px;
+    border: 1px solid #DBDBDB;
+    background-color: #DBDBDB;
+    margin: 0px;
+}
+button.gray:hover {
+    padding: 5px;
+    border: 1px solid #C9C9C9;
+    background-color: #C9C9C9;
+    margin: 0px;
+}
+button.gray:active {
+    padding: 5px;
+    border: 1px solid #ABABAB;
+    background-color: #ABABAB;
+    margin: 0px;
+}
+button.gray>* {
+    display: inherit;
+}
+button.white {
+    padding: 10px 30px 10px 10px;
+    border: 1px solid #DBDBDB;
+    background-color: #DBDBDB;
+    margin: 0px;
+    border-right: 1px solid #C9C9C9;
+    height: 40px;
+}
+button.white:hover {
+    border: 1px solid #C9C9C9;
+    background-color: #C9C9C9;
+    margin: 0px;
+    border-right: 1px solid #C9C9C9;
+}
+button.white:active {
+    border: 1px solid #E6E6E6;
+    background-color: #E6E6E6;
+    margin: 0px;
+    border-right: 1px solid #C9C9C9;
+}
+button.white>* {
+    float: left;
+    display: block;
+}
+button.whiteActive {
+    border: 1px solid #E6E6E6;
+    background-color: #E6E6E6;
+    margin: 0px;
+    border-right: 1px solid #C9C9C9;
+}
+button.whiteActive:hover,
+button.whiteActive:active {
+    border: 1px solid #E6E6E6;
+    background-color: #E6E6E6;
+    margin: 0px;
+    border-right: 1px solid #C9C9C9;
+}
+button.red {
+    padding: 7px;
+    border: 1px solid #BE3027;
+    background-color: #BE3027;
+    border-radius: 5px;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.15);
+    color: #FFF;
+}
+button.red:hover {
+    border: 1px solid #A62620;
+    background-color: #A62620;
+}
+button.red:active,
+button.red:disabled {
+    border: 1px solid #8E1C1C;
+    background-color: #8E1C1C;
+}
+button.blue {
+    padding: 7px;
+    border: 1px solid #518AE7;
+    background-color: #518AE7;
+    border-radius: 5px;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.15);
+    color: #FFF;
+}
+button.blue:hover {
+    border: 1px solid #4777BB;
+    background-color: #4777BB;
+}
+button.blue:active,
+button.blue:disabled {
+    border: 1px solid #30538C;
+    background-color: #30538C;
+}
+button.green {
+    padding: 7px;
+    border: 1px solid #3ABA2A;
+    background-color: #3ABA2A;
+    border-radius: 5px;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.15);
+    color: #FFF;
+}
+button.green:hover {
+    border: 1px solid #32AB21;
+    background-color: #32AB21;
+}
+button.green:active,
+button.green:disabled {
+    border: 1px solid #24731A;
+    background-color: #24731A;
+}
+button.width {
+    width: 100px;
+}
+div#popUpBG {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.70);
+    z-index: 100;
+}
+div.panelHolder {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+}
+div.popUp {
+    margin: auto;
+    margin-top: 53px;
+}
+div.popUp header{
+    background-color: transparent;
+    border-bottom: 1px solid rgba(211, 211, 211, 0);
+}
+div.notificationHolder {
+    position: fixed;
+    width: 100%;
+    top: 10px;
+    z-index: 200;
+}
+div.notification {
+    padding: 7px 15px 7px 15px;
+    border-radius: 5px;
+    background-color: #444;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.50);
+    color: #FFF;
+    margin: auto;
+    text-align: center;
+    width: 450px;
+}
+div.notification span {
+    color: #FFF;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.35);
+}
+div.conteiner>span {
+    background-color: #ABABAB;
+    padding: 6px 5px;
+    display: block;
+    float: left;
+    margin-right: 3px;
+    position: relative;
+    padding-right: 30px;
+    margin-top: 3px;
+}
+div.conteiner>span>span {
+    margin-left: 5px;
+    border-left: 1px solid;
+    padding-left: 5px;
+}
+div.tableConteiner>span {
+    background-color: #3ABA2A;
+    color: white;
+}
+div.fieldConteiner>span {
+    background-color: #518AE7;
+    color: white;
+}
+img {
+    border: none;
+}
+.description {
+    color: #555;
+    font-style: italic;
+    font-size: 0.8em;
+    clear: both;
+    width: 100%;
+    height: auto;
+}
+div.onRight {
+    float: right !important;
+}
+div.onRight>* {
+    float: left;
+}
+i {
+    background-image: url(../images/icons-white.png);
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+}
+i.iconArrowLeft {
+    background-position: -432px -72px;
+}
+i.iconArrowDown {
+    background-position: -313px -119px;
+}
+i.iconAdd {
+    background-position: -408px -96px;
+}
+i.iconApply {
+    background-position: -289px 0px;
+}
+i.iconRemove {
+    background-position: -312px 0px;
+}
+i.iconSave {
+    background-position: -457px -145px;
+}
+i.iconBurn {
+    background-position: -72px -120px;
+}
+i.iconLetsGo {
+    background-position: -336px -25px;
+}
+i.iconAlert {
+    background-position: -144px -121px;
+}
+i.iconListDrag {
+    background-position: -264px 0px;
+}
+i.iconNoChecked {
+    background-position: 14px 0px;
+}
+i.iconChecked {
+    background-position: -288px 0px;
+}
+i.iconRefresh {
+    background-position: -240px -24px;
+}
+div.smallDisplay {
+    display: none;
+    opacity: 0;
+}
+div.javascriptDisabled {
+    text-align: center;
+    margin-top: 80px;
+}
+input,
+select,
+textarea {
+    margin-bottom: 10px;
+    border: 1px solid #BBB;
+}
+header.classesMain>div:first-child>button {
+    padding: 10px;
+}
+.inlineEditor {
+    display: block;
+    width: auto;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    background: none;
+}
+textarea.inlineEditor {
+    width: 100%;
+}
+div.sendObject {
+    width: 120px;
+    background-color: rgb(141, 141, 141);
+    border-radius: 11px;
+    margin: 2px;
+}
+.sendObject button {
+    float: left;
+    margin: 0px;
+}
+.sendObject p {
+    float: left;
+    color: white;
+    font-size: 15px;
+    margin: 3px 5px;
+    cursor: default;
+}
+@media (max-width: 1200px) {
+    div.variablesHolder {
+        width: 39.5%;
+        transition: all 0.4s;
+    }
+    div.methodsHolder {
+        width: 59.5%;
+        transition: all 0.4s;
+    }
+}
+@media (max-width: 1000px) {
+    div.variablesHolder {
+        width: 49.5%;
+        transition: all 0.4s;
+    }
+    header.main a {
+        overflow: hidden;
+    }
+    header.main a img {
+        margin-left: -176px;
+        transition: margin-left 0.4s;
+    }
+    div.methodsHolder {
+        width: 49.5%;
+        transition: all 0.4s;
+    }
+}
+@media (max-width: 820px) {
+    div.variablesHolder {
+        width: 100%;
+        margin-bottom: 10px;
+        transition: all 0.4s;
+    }
+    div.methodsHolder {
+        width: 100%;
+        transition: all 0.4s;
+    }
+}
+@media (max-width: 700px) {
+    body>* {
+        display: none;
+    }
+    div.smallDisplay {
+        display: block;
+        opacity: 1;
+        transition: opacity 0.4s;
+    }
+    div.smallDisplay div {
+        text-align: center;
+        margin-top: 80px;
+    }
+    div.javascriptDisabled {
+        display: block;
+    }
+}

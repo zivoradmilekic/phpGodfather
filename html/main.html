@@ -1,0 +1,97 @@
+		<div class="page" id="main">
+			<div class="main">
+				<div class="demo">
+					<div class="content">
+						<div class="panel">
+							<header class="panel">
+								<span>Projects:</span>
+							</header>
+							<div class="content" id="projectsList" ng-show="showProjectsList.show" >
+								<ul>
+									<p ng-show="!projectsList" style="padding: 5px;">There are not projects!</p>
+									<li ng-repeat="project in projectsList | orderBy:'-date'">
+										
+										<button class="icon" ng-class="{iconBlue:project.delete}" style="margin-left: 3px; position: absolute; right: 10px; top: 17px;" ng-click="project.delete=!project.delete" ><i class="iconRemove"></i></button>
+										<button class="icon iconRed" style="margin-left: 3px; position: absolute; right: 40px; top: 17px;" ng-click="deleteProject(project)" ng-show="project.delete"><i class="iconApply"></i></button>
+										<a href="#/project/{{project.file}}">
+											<h4>{{project.name}}</h4>
+											<p ng-show="!project.delete">{{ project.date | date:"h:mm a - dd MMM yyyy" }}</p>
+											<p ng-show="project.delete">Are you sure?</p>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<aside>
+					<div>
+						<div class="panel">
+							<header class="panel">
+								<span>Create project:</span>
+							</header>
+							<div class="content" ng-show="showProjectForm.show">
+								<label>Project name:</label>
+								<input type="text" class="red" ng-model="newProject.name"/>
+								<label>Host:</label>
+								<input type="text" class="red" ng-model="newProject.host"/>
+								<label>User:</label>
+								<input type="text" class="red" ng-model="newProject.user"/>
+								<label>Password:</label>
+								<input type="text" class="red" ng-model="newProject.password"/>
+								<label>Database:</label>
+								<input type="text" class="red" ng-model="newProject.database"/>
+								<button ng-disabled="!newProject.name || !newProject.host || !newProject.user || !newProject.database" ng-click="createProject()" class="red" style="width: 100px; margin: 0px auto; display: block;"><i class="iconLetsGo"></i> Let's go!</button>
+							</div>
+						</div>
+					</div>
+				</aside>
+			</div>
+			<header class="main">
+				<a href=""><img src="images/logo.png" width="223" height="30"/></a>
+			</header>
+		</div>
+		<div class="notificationHolder" ng-show="notification.text">
+			<div class="notification">
+				<i class="iconAlert" style="margin-top: 3px; position: absolute;"></i>
+				<span>{{ notification.text }}</span>
+			</div>
+		</div>
+		<div class="panelHolder" id="popUpBG" ng-show="variablePopUp.show || methodPopUp.show || alert.text || confirmPopUp.show">
+			<div class="panel popUp" ng-show="alert.text">
+				<header class="panel">
+					<span>Alert</span>
+					<button ng-click="hideAlert()" style="margin: -2px 2px; float: right;" class="icon">
+						<i class="iconRemove"></i>
+					</button>
+				</header>
+				<div class="content">
+					<p>{{ alert.text }}</p>
+					<button class="blue width" ng-click="hideAlert()" style="margin-left: 110px;">Ok</button>
+				</div>
+			</div>
+			<div class="panel popUp" ng-show="confirmPopUp.show">
+				<header class="panel">Confirm</header>
+				<div class="content">
+					<p>This is confirm text!</p>
+					<button class="green width" style="margin-left: 60px;">Yes</button>
+					<button class="red width">No</button>
+				</div>
+			</div>
+		</div>
+		<div class="smallDisplay">
+			<div>
+				<img src="images/logo.png" width="223" height="30"/>
+				<p>You CAN NOT use application on small display!</p>
+			</div>
+		</div>
+		<script>
+	      $(document).ready(function ($) {
+	        "use strict";
+	        setTimeout(function(){
+	        	$('div.demo').perfectScrollbar({wheelSpeed:100});
+		        $('aside').perfectScrollbar({wheelSpeed:100});
+	        }, 500);
+	      });
+	    </script>
+		

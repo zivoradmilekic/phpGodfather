@@ -1,0 +1,309 @@
+		<div class="page" id="panel">
+			<div class="main">
+				<aside id="tables">
+				    <header class="panel">
+				        <span>Tables:</span>
+				        <div class="onRight">
+				            <button class="icon remove" ng-click="refreshTables()">
+				                <i class="iconRefresh"></i>
+				            </button>
+				        </div>
+				    </header>
+					<ul class="tables">
+					    <div>
+                            <li ng-repeat="table in project.tables">
+                                <header>
+                                    <p ng-model="table.name" drag="true" jqyoui-options="{revert: 'invalid', helper: 'clone', appendTo:'div.main'}" jqyoui-draggable="{index: {{$index}}, placeholder: 'keep'}">{{ table.name }}</p>
+
+                                    <button ng-click="toggleTable(table)" class="icon">
+                                        <i class="iconArrowLeft" ng-class="{iconArrowDown:table.show}"></i>
+                                    </button>
+                                    <div class="iconDragList" ng-model="table" drag="true" jqyoui-options="{revert: 'invalid', helper: 'clone', appendTo:'div.main'}" jqyoui-draggable="{index: {{$index}}, placeholder: 'keep', element:'array'}" style="float: right;">
+                                        <i class="iconListDrag"></i>
+                                    </div>
+                                </header>
+                                <ul ng-if="table.show" class="tableFields">
+                                    <li ng-repeat="field in table.fields">
+                                        <p ng-model="field" drag="true" jqyoui-options="{revert: 'invalid', helper: 'clone', appendTo:'div.main'}" jqyoui-draggable="{index: {{$index}}, placeholder: 'keep'}">{{ field }}</p>
+                                    </li>
+                                </ul>
+                            </li>
+						</div>
+					</ul>
+				</aside>
+				<tabs>
+				  <pane name="New class">
+			      	<div class="createClass">
+						<label>Class name:</label>
+						<input class="green" type="text" ng-model="newClass.name" />
+						<label>Class description:</label>
+						<textarea class="green" ng-model="newClass.description"></textarea>
+						<button class="green" ng-disabled="!newClass.name" ng-click="createClass()"><i class="iconAdd"></i>Create class</button>
+					</div>
+				  </pane>
+			      <pane ng-repeat="class in project.classes" name="{{ class.name }}">
+			    	<div class="variablesHolder">
+						<header>
+							<input type="text" ng-model="class.name" placeholder="Class name?" class="inlineEditor h3">
+							<div class="onRight">
+								<button class="green" ng-click="generateClass(class)"><i class="iconBurn"></i>Generate class</button>
+							</div>
+						</header>
+						<textarea ng-model="class.description" placeholder="Class description?" class="inlineEditor description"></textarea>
+						<label>Variables:</label>
+						<ul class="variables">
+							<li ng-repeat="variable in class.variables">
+								<p class="name">{{variable.name}}</p>
+								<div class="onRight">
+								<p class="value" style="margin-right: 5px;" ng-show="variable.value">{{variable.value}}</p>
+								<button class="icon"style="margin-left: 3px;" ng-click="deleteVariable($index)"><i class="iconRemove"></i></button>
+								</div>
+							</li>
+							<button class="gray" ng-click="toggleVariablePopUp(class)" style="width: 100%;"><div class="icon" style="margin-right: 3px;"><i class="iconAdd"></i></div><span>New variable</span></button>
+						</ul>
+					</div>
+					<div class="methodsHolder">
+						<label>Methods:</label>
+						<ul  class="methods">
+							<li ng-repeat="method in class.methods">
+								<header>
+									<input type="text" class="name" ng-model="method.name" placeholder="Method name?">
+									<div class="onRight">
+									    <div class="sendObject" ng-click="toggleSendObject(method)">
+									        <button class="icon">
+									            <i class="iconNoChecked" ng-class="{iconChecked:method.sendObject}"></i>
+									        </button>
+									        <p>Send object</p>
+									    </div>
+									    <button class="icon" ng-click="deleteMethod($index)">
+									        <i class="iconRemove"></i>
+									    </button>
+									    <button class="icon" ng-click="toggleMethod(method)">
+									        <i class="iconArrowLeft" ng-class="{iconArrowDown:method.show}"></i>
+									    </button>
+									</div>
+								</header>
+								<div ng-show="method.show" class="body">
+									<textarea ng-model="method.description" placeholder="Method description?" class="inlineEditor description"></textarea>
+
+									<div ng-if="method.basedOn=='mysql-select'">
+										<label>SELECT:</label>
+										<div class="conteiner fieldConteiner" ng-model="method.select" drop="true" jqyoui-droppable="{multiple:true}">
+											<span ng-repeat="select in method.select">
+												{{select}}
+												<div class="icon remove" ng-click="removeElement(method.select, $index)">
+													<i class="iconRemove"></i>
+												</div>
+											</span>
+										</div>
+									</div>
+									<div ng-if="method.basedOn=='mysql-select'">
+										<label>FROM:</label>
+										<div class="conteiner tableConteiner" ng-model="method.from" drop="true" jqyoui-droppable="{multiple:false}">
+											<span ng-repeat="from in method.from">
+												{{ from }}
+												<div class="icon remove" ng-click="removeElement(method.from, $index)">
+													<i class="iconRemove"></i>
+												</div>
+											</span>
+										</div>
+									</div>
+									<div ng-if="method.basedOn=='mysql-insert-into'">
+										<label>INSERT INTO:</label>
+										<div class="conteiner tableConteiner" ng-model="method.insertInto" drop="true" jqyoui-droppable="{multiple:true}">
+											<span ng-repeat="insertInto in method.insertInto">
+												{{insertInto}}
+												<div class="icon remove" ng-click="removeElement(method.insertInto, $index)">
+													<i class="iconRemove"></i>
+												</div>
+											</span>
+										</div>
+									</div>
+									<div ng-if="method.basedOn=='mysql-insert-into'">
+										<label>COLUMNS:</label>
+										<div class="conteiner fieldConteiner" ng-model="method.columns" drop="true" jqyoui-droppable="{multiple:true}">
+											<span ng-repeat="column in method.columns">
+												{{column}}
+												<div class="icon remove" ng-click="removeElement(method.columns, $index)">
+													<i class="iconRemove"></i>
+												</div>
+											</span>
+										</div>
+									</div>
+									<div ng-if="method.basedOn=='mysql-insert-into'">
+										<label>VALUES:</label>
+										<div class="conteiner fieldConteiner" ng-model="method.values" drop="true" jqyoui-droppable="{multiple:true}">
+											<span ng-repeat="value in method.values">
+												{{value}}
+												<div class="icon remove" ng-click="removeElement(method.values, $index)">
+													<i class="iconRemove"></i>
+												</div>
+											</span>
+										</div>
+									</div>
+
+									<div ng-if="method.basedOn=='mysql-update'">
+										<label>UPDATE:</label>
+										<div class="conteiner tableConteiner" ng-model="method.update" drop="true" jqyoui-droppable="{multiple:true}">
+											<span ng-repeat="update in method.update">
+												{{update}}
+												<div class="icon remove" ng-click="removeElement(method.update, $index)">
+													<i class="iconRemove"></i>
+												</div>
+											</span>
+										</div>
+									</div>
+									<div ng-if="method.basedOn=='mysql-update'">
+										<label>SET:</label>
+										<div class="conteiner fieldConteiner" ng-model="method.set" drop="true" jqyoui-droppable="{multiple:true, element:'object'}">
+											<span ng-repeat="set in method.set">{{set.field}}<span>{{set.variable}}</span><div class="icon remove" ng-click="removeElement(method.set, $index)">
+													<i class="iconRemove"></i>
+												</div></span>
+										</div>
+									</div>
+									<div ng-if="method.basedOn=='mysql-delete'">
+										<label>DELETE FROM:</label>
+										<div class="conteiner tableConteiner" ng-model="method.deleteFrom" drop="true" jqyoui-droppable="{multiple:true}">
+											<span ng-repeat="deleteFrom in method.deleteFrom">
+												{{deleteFrom}}
+												<div class="icon remove" ng-click="removeElement(method.deleteFrom, $index)">
+													<i class="iconRemove"></i>
+												</div>
+											</span>
+										</div>
+									</div>
+									<div ng-if="method.basedOn!='mysql-insert-into'">
+										<label>WHERE:</label>
+										<div class="conteiner fieldConteiner" ng-model="method.where" drop="true" jqyoui-droppable="{multiple:true, element:'object'}">
+											<span ng-repeat="where in method.where">{{where.field}}<span>{{where.variable}}</span><div class="icon remove" ng-click="removeElement(method.where, $index)">
+													<i class="iconRemove"></i>
+												</div></span>
+										</div>
+									</div>
+
+								</div>
+							</li>
+							
+							<button class="gray" ng-click="toggleMethodPopUp(class)" style="width: 100%;"><div class="icon" style="margin-right: 3px;"><i class="iconAdd"></i></div><span>New method</span></button>
+						</ul>
+					</div>
+			      </pane>
+			    </tabs>                
+			</div>
+			
+            <div class="panelHolder" id="popUpBG" ng-show="variablePopUp.show || methodPopUp.show || alert.text || confirmPopUp.show || projectPopUp.show">
+
+                <div class="panel popUp" ng-show="alert.text">
+                    <header class="panel">
+                        <span>Alert</span>
+                        <button ng-click="hideAlert()" style="margin: -2px 2px; float: right;" class="icon">
+                            <i class="iconRemove"></i>
+                        </button>
+                    </header>
+                    <div class="content">
+                        <p>{{ alert.text }}</p>
+                        <button class="blue width" ng-click="hideAlert()" style="margin-left: 110px;">Ok</button>
+                    </div>
+                </div>
+                <div class="panel popUp" ng-show="confirmPopUp.show">
+                    <header class="panel">Confirm</header>
+                    <div class="content">
+                        <p>This is confirm text!</p>
+                        <button class="green width" style="margin-left: 60px;">Yes</button>
+                        <button class="red width">No</button>
+                    </div>
+                </div>
+                <div class="panel popUp" ng-show="variablePopUp.show">
+                    <header class="panel">
+                        <span>Add new variable</span>
+                        <button ng-click="toggleVariablePopUp()" style="margin: -2px 2px; float: right;" class="icon">
+                            <i class="iconRemove"></i>
+                        </button>
+                    </header>
+                    <div class="content">
+                        <label>Variable name:</label>
+                        <input class="blue" type="text" ng-model="newVariable.name"/>
+                        <label>Variable value:</label>
+                        <input class="blue" type="text" ng-model="newVariable.value"/>
+                        <button class="blue width" style="margin-left: 60px;" ng-disabled="!newVariable.name" ng-click="addVariable()">Add</button>
+                        <button class="red width" ng-click="toggleVariablePopUp()">Close</button>
+                    </div>
+                </div>
+                <div class="panel popUp" ng-show="methodPopUp.show">
+                    <header class="panel">
+                        <span>Add new method</span>
+                        <button ng-click="toggleMethodPopUp()" style="margin: -2px 2px; float: right;" class="icon">
+                            <i class="iconRemove"></i>
+                        </button>
+                    </header>
+                    <div class="content">
+                        <label>Method name:</label>
+                        <input class="blue" type="text" ng-model="newMethod.name"/>
+                        <label>Based on:</label>
+                        <select class="blue" ng-model="newMethod.basedOn" ng-options="methodType.title group by methodType.group for methodType in methodTypes">
+                            <option value="">--- Choose method ---</option>
+                        </select>
+                        <label>Method description:</label>
+                        <textarea class="blue" ng-model="newMethod.description"></textarea>
+                        <button class="blue width" style="margin-left: 60px;" ng-disabled="!newMethod.name || !newMethod.basedOn.name" ng-click="addMethod()">Add</button>
+                        <button class="red width" ng-click="toggleMethodPopUp()">Close</button>
+                    </div>
+                </div>
+                <div class="panel popUp" ng-show="projectPopUp.show">
+                    <header class="panel">
+                        <span>Edit project</span>
+                        <button ng-click="toggleProject()" style="margin: -2px 2px; float: right;" class="icon">
+                            <i class="iconRemove"></i>
+                        </button>
+                    </header>
+                    <div class="content">
+                        <label>Name:</label>
+                        <input class="red" type="text" ng-model="project.name"/>
+                        <label>Host:</label>
+                        <input class="red" type="text" ng-model="project.host"/>
+                        <label>User:</label>
+                        <input class="red" type="text" ng-model="project.user"/>
+                        <label>Password:</label>
+                        <input class="red" type="text" ng-model="project.password"/>
+                        <label>Database:</label>
+                        <input class="red" type="text" ng-model="project.database"/>
+                        <button class="red" style="margin-left: 70px;" ng-click="createMySQLConnectFile()">Make MySQLConnect.php file</button>
+                    </div>
+                </div>
+            </div>
+            
+            <header class="main">
+				<a href="#/"><img src="images/logo.png" width="223" height="30"/></a>
+				<button class="h1" ng-click="toggleProject()">{{ project.name }}</button>
+				<div class="onRight">
+                    <nav>
+                        <button class="green" ng-click="generateAllClasses()"><i class="iconBurn"></i>Generate all</button>
+                        <button class="red" ng-click="saveProject()"><i class="iconSave"></i>Save project</button>
+                    </nav>
+				</div>
+				
+			</header>
+		</div>
+		<div class="notificationHolder" ng-show="notification.text">
+			<div class="notification">
+				<i class="iconAlert" style="margin-top: 3px; position: absolute;"></i>
+				<span>{{ notification.text }}</span>
+			</div>
+		</div>
+		
+		<div class="smallDisplay">
+			<div>
+				<img src="images/logo.png" width="223" height="30"/>
+				<p>You CAN NOT use application on small display!</p>
+			</div>
+		</div>
+		<script>
+	      $(document).ready(function ($) {
+	        "use strict";
+	        setTimeout(function(){
+	        	$('aside#tables ul.tables').perfectScrollbar({wheelSpeed:80});
+	        	$('div.classesHolder').perfectScrollbar({wheelSpeed:80});
+	        	
+	        }, 1000);
+	      });
+	    </script>
