@@ -100,7 +100,7 @@ app.service('projectService', function ($http) {
     var methodTypes = [
       {"title":"SELECT query", "name":"mysql-select", "group":"MySQL"},
       {"title":"INSERT INTO query", "name":"mysql-insert-into", "group":"MySQL"},
-      {"title":"UPDATA query", "name":"mysql-update", "group":"MySQL"},
+      {"title":"UPDATE query", "name":"mysql-update", "group":"MySQL"},
       {"title":"DELETE query", "name":"mysql-delete", "group":"MySQL"},
     ];
 
