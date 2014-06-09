@@ -1,3 +1,3 @@
 phpGodfather
 ============
-![alt tag](https://github.com/zivoradmilekic/phpGodfather/raw/master/images/logo.png)
+![alt tag](https://github.com/zivoradmilekic/phpGodfather/raw/master/logotype_and_sign.jpg)
