@@ -126,6 +126,10 @@ app.controller('PanelCTRL', function ($scope, $routeParams, $timeout, projectSer
         array.splice(index, 1);
     }
     
+    $scope.removeAllElement = function(array) {
+        array.splice(0, array.length);
+    }
+    
     $scope.refreshTables = function(){
         projectService.refreshTables($scope.project).then(function(result){
             console.log(result);

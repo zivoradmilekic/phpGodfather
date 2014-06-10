@@ -95,6 +95,7 @@
 													<i class="iconRemove"></i>
 												</div>
 											</span>
+											<button class="removeAll" ng-show="!method.select.length==0" ng-click="removeAllElement(method.select)"><i class="iconRemove"></i> Remove all</button>
 										</div>
 									</div>
 									<div ng-if="method.basedOn=='mysql-select'">
@@ -106,6 +107,7 @@
 													<i class="iconRemove"></i>
 												</div>
 											</span>
+											<button class="removeAll" ng-show="!method.from.length==0" ng-click="removeAllElement(method.from)"><i class="iconRemove"></i> Remove all</button>
 										</div>
 									</div>
 									<div ng-if="method.basedOn=='mysql-insert-into'">
@@ -117,6 +119,7 @@
 													<i class="iconRemove"></i>
 												</div>
 											</span>
+											<button class="removeAll" ng-show="!method.insertInto.length==0" ng-click="removeAllElement(method.insertInto)"><i class="iconRemove"></i> Remove all</button>
 										</div>
 									</div>
 									<div ng-if="method.basedOn=='mysql-insert-into'">
@@ -128,6 +131,7 @@
 													<i class="iconRemove"></i>
 												</div>
 											</span>
+											<button class="removeAll" ng-show="!method.columns.length==0" ng-click="removeAllElement(method.columns)"><i class="iconRemove"></i> Remove all</button>
 										</div>
 									</div>
 									<div ng-if="method.basedOn=='mysql-insert-into'">
@@ -139,6 +143,7 @@
 													<i class="iconRemove"></i>
 												</div>
 											</span>
+											<button class="removeAll" ng-show="!method.values.length==0" ng-click="removeAllElement(method.values)"><i class="iconRemove"></i> Remove all</button>
 										</div>
 									</div>
 
@@ -151,6 +156,7 @@
 													<i class="iconRemove"></i>
 												</div>
 											</span>
+											<button class="removeAll" ng-show="!method.update.length==0" ng-click="removeAllElement(method.update)"><i class="iconRemove"></i> Remove all</button>
 										</div>
 									</div>
 									<div ng-if="method.basedOn=='mysql-update'">
@@ -159,6 +165,8 @@
 											<span ng-repeat="set in method.set">{{set.field}}<span>{{set.variable}}</span><div class="icon remove" ng-click="removeElement(method.set, $index)">
 													<i class="iconRemove"></i>
 												</div></span>
+								            
+											<button class="removeAll" ng-show="!method.set.length==0" ng-click="removeAllElement(method.set)"><i class="iconRemove"></i> Remove all</button>
 										</div>
 									</div>
 									<div ng-if="method.basedOn=='mysql-delete'">
@@ -170,6 +178,7 @@
 													<i class="iconRemove"></i>
 												</div>
 											</span>
+											<button class="removeAll" ng-show="!method.deleteFrom.length==0" ng-click="removeAllElement(method.deleteFrom)"><i class="iconRemove"></i> Remove all</button>
 										</div>
 									</div>
 									<div ng-if="method.basedOn!='mysql-insert-into'">
@@ -178,6 +187,8 @@
 											<span ng-repeat="where in method.where">{{where.field}}<span>{{where.variable}}</span><div class="icon remove" ng-click="removeElement(method.where, $index)">
 													<i class="iconRemove"></i>
 												</div></span>
+								            
+											<button class="removeAll" ng-show="!method.where.length==0" ng-click="removeAllElement(method.where)"><i class="iconRemove"></i> Remove all</button>
 										</div>
 									</div>
 

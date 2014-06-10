@@ -358,6 +358,13 @@ ul.methods li div.body div.conteiner {
     display: inline-table;
     padding-bottom: 3px;
     padding-left: 3px;
+    position: relative;
+}
+ul.methods li div.body div.conteiner button.removeAll{
+    display: none;
+}
+ul.methods li div.body div.conteiner:hover button.removeAll{
+    display: block;
 }
 h4 {
     margin: 10px 0px;
@@ -455,6 +462,23 @@ button.icon:hover {
 }
 button.icon:active {
     background-color: #666;
+}
+button.removeAll{
+    background-color: #222;
+    position: absolute;
+    border: 0px;
+    color: #FFFFFF;
+    padding: 9px;
+    top: -35px;
+    right: 0px;
+}
+button.removeAll:hover{
+    background-color: #444;
+    
+}
+button.removeAll:active{
+    background-color: #666;
+    
 }
 button.iconRed {
     border: 1px solid #BE3027;
