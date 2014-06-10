@@ -825,10 +825,6 @@ div.sendObject {
     }
 }
 @media (max-width: 1000px) {
-    div.variablesHolder {
-        width: 49.5%;
-        transition: all 0.4s;
-    }
     header.main a {
         overflow: hidden;
     }
@@ -836,12 +832,6 @@ div.sendObject {
         margin-left: -176px;
         transition: margin-left 0.4s;
     }
-    div.methodsHolder {
-        width: 49.5%;
-        transition: all 0.4s;
-    }
-}
-@media (max-width: 820px) {
     div.variablesHolder {
         width: 100%;
         margin-bottom: 10px;
