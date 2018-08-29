@@ -9,8 +9,8 @@ class Project extends Helper{
 		}
 
 		function createProject($Request){
-			mysql_connect($Request->host, $Request->user, $Request->password);
-			if(mysql_select_db($Request->database)==1){
+			$link = mysqli_connect($Request->host, $Request->user, $Request->password);
+			if(mysqli_select_db($link, $Request->database)==1){
 				
                 $Request->tables = $this->getTables($Request);
                 
@@ -27,16 +27,17 @@ class Project extends Helper{
         }
         
         function getTables($Request){
-            mysql_connect($Request->host, $Request->user, $Request->password);
-			if(mysql_select_db($Request->database)==1){
+            $link = mysqli_connect($Request->host, $Request->user, $Request->password);
+			if(mysqli_select_db($link, $Request->database)==1){
 				$i = 0;
                 $Request->tables = array();
-				$tables = mysql_query("SHOW TABLES FROM ".$Request->database);
-				while($table=mysql_fetch_array($tables)){
+				$tables = mysqli_query($link, "SHOW TABLES FROM ".$Request->database);
+				while($table=mysqli_fetch_array($tables)){
+					$Request->tables[$i] = new stdClass();
 					$Request->tables[$i]->name = $table[0];
 					$j = 0;
-					$fields = mysql_query("SHOW COLUMNS FROM ".$table[0]);
-					while($field=mysql_fetch_array($fields)){
+					$fields = mysqli_query($link, "SHOW COLUMNS FROM ".$table[0]);
+					while($field=mysqli_fetch_array($fields)){
 						$Request->tables[$i]->fields[$j] = $field[0];
 						$j++;
 					}
@@ -126,8 +127,8 @@ class Project extends Helper{
 		    $phpCode .= "\t\t*/\n";
 	    	$phpCode .= "\t\tfunction __construct(){\n";
 	    	$phpCode .= "\t\t\tmysql_connect(DATABASE_SERVER,DATABASE_USERNAME,DATABASE_PASSWORD);\n";
-	    	$phpCode .= "\t\t\tmysql_select_db(DATABASE_NAME);\n";
-	    	$phpCode .= "\t\t\tmysql_query(\"SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'\");\n";
+	    	$phpCode .= "\t\t\tmysqli_select_db(DATABASE_NAME);\n";
+	    	$phpCode .= "\t\t\tmysqli_query(\"SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'\");\n";
 			$phpCode .= "\t\t}\n";
 
 	    	$phpCode .= "\t\t\n";
@@ -251,7 +252,7 @@ class Project extends Helper{
 				$functionParam = trim($functionParam,", ");
 
 				$phpCode .= "\t\tfunction ".$Request->class->methods[$i]->name."(".$functionParam."){\n";
-				$phpCode .= "\t\t\treturn mysql_query(".$query.");\n";
+				$phpCode .= "\t\t\treturn mysqli_query(".$query.");\n";
 				$phpCode .= "\t\t}\n\n";
 			}
 			$phpCode .= "\t}\n";
